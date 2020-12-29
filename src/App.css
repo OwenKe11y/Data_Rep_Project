@@ -1,38 +1,78 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .navbar{
+    background-color: #1a1b1d;
+    
+    
+    
   }
+  
+  /* Parallax taken from https://themes.artbees.net/blog/pure-css-parallax-in-5-minutes/ */
+.main {
+  /* Fill the available space */
+  height: 100vh;
+ 
+  
+  /* Make the children of the element closer to the viewport */
+  perspective: 2px;
+  
+  /* Hide the overflow */
+  overflow-x: hidden;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* General styling, not necessarily related to parallax effect  */
+.section {
+  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 80vh;
+  font-size: 40px;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+/* Different background colors for demo purpose */
+.static-one {
+  background-color: #1a1b1d;
+  color:  #dd3011;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.static-two {
+  background-color: #dd3011;
+  color: #1a1b1d;
+}
+
+.static-three {
+  background-color: #c06f6c;
+}
+
+.parallax::after {
+  /* Position the pseudo-element to fill the parent */
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  
+  /* Scale the image to full */
+  background-size: cover;
+ 
+  
+  /* Move the element back then scale the element, it helps to appears more slowly */
+  transform: translateZ(-1px) scale(1.7);
+  
+  /* Set the parallax section before the other elements. */
+  z-index: -1;
+}
+
+/* Different background images */
+.parallax-one::after {
+  background-image: url("./images/homeImage2.jpg");
+  background-position: 70%;
+
+}
+
+.parallax-two::after {
+  background-image: url("./images/homeImage.jpg");
+  background-position: 70%;
 }
