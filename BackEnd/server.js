@@ -24,7 +24,9 @@ const Schema = mongoose.Schema;
 var workoutschema = new Schema({
     Name: String,
     Sets: String,
-    Exercise: String
+    Exercise1: String,
+    Exercise2: String,
+    Exercise3: String
 });
 
 //Declare workout Schema 
@@ -43,14 +45,10 @@ app.use(function (req, res, next) {
 
 //workout data linked to api/workouts
 app.get('/api/workouts', (req, res) => {
-
-
     //Interact with Data base
     workoutModel.find((err, data) => {
         res.json(data);
     })
-
-
 })
 
 //Search for a workout
@@ -60,7 +58,7 @@ app.get('/api/workouts/:id', (req,res)=>{
   })
 })
 
-//Update a workout
+//Update a Movie
 app.put('/api/workouts/:id', (req,res)=>{
     console.log("Update workout: " + req.params.id);
     console.log(req.body);
@@ -88,12 +86,16 @@ app.post('/api/workouts', (req, res) => {
     console.log('workout recieved');
     console.log(req.body.Name);
     console.log(req.body.Sets);
-    console.log(req.body.Exercise);
+    console.log(req.body.Exercise1);
+    console.log(req.body.Exercise2);
+    console.log(req.body.Exercise3);
 
     workoutModel.create({
         Name: req.body.Name,
         Sets: req.body.Sets,
-        Exercise: req.body.Exercise
+        Exercise1: req.body.Exercise1,
+        Exercise2: req.body.Exercise2,
+        Exercise3: req.body.Exercise3
 
     });
 

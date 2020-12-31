@@ -5,12 +5,12 @@ import axios from 'axios';
 
 export class MyWorkouts extends React.Component {
 
-    constructor(){
+    constructor() {
         super();
         this.ReloadData = this.ReloadData.bind(this);
 
     }
-    
+
     //create variable to hold our data
     state = {
         workouts:
@@ -49,10 +49,23 @@ export class MyWorkouts extends React.Component {
 
         return (
 
-            <div className="App" style={{backgroundColor:"red"}}>
-                <h1>My read in another component</h1>
-                {/* importing our movie tag */}
-                <Workouts workouts={this.state.workouts} ReloadData={this.ReloadData}></Workouts>
+            <div className="home">
+                {/* Sections and content for parallax scrolling (reference in App.css) */}
+                <main className="main">
+                    <section className="section parallax parallax-one-add">
+                        <div className="mainText">Your Workouts
+                    </div>
+                    </section>
+                    <section className="section static static-one">
+                        <div style={{ display: "inline-block", width: "100%" }}>
+                            {/* importing our workout tag */}
+                            <Workouts workouts={this.state.workouts} ReloadData={this.ReloadData}></Workouts>
+                        </div>
+                    </section>
+                </main>
+
+
+
             </div>
         );
     }

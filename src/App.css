@@ -1,11 +1,13 @@
   
-  .card{
-    margin-left: 100px;
-  }
-  
+/*#region Navbar */
   .navbar {
     background-color: #1a1b1d;
   }
+/*#endregion */
+
+/*#region Parallax */
+
+
 
   /* Parallax taken from https://themes.artbees.net/blog/pure-css-parallax-in-5-minutes/ */
   .main {
@@ -41,11 +43,7 @@
   .static-two {
     background-color: #dd3011;
     color           : #1a1b1d;
-  }
-
-  .static-three {
-    background-color: #c06f6c;
-  }
+  }*
 
   .parallax::after {
     /* Position the pseudo-element to fill the parent */
@@ -71,6 +69,7 @@
   .parallax-one::after {
     background-image   : url("./images/homeImage2.jpg");
     background-position: 70%;
+    
 
   }
 
@@ -78,3 +77,48 @@
     background-image   : url("./images/homeImage.jpg");
     background-position: 70%;
   }
+
+  .parallax-one-add::after {
+    background-image   : url("./images/myWorkout1.jpg");
+    background-position: 70%;
+
+  }
+
+  .parallax-one-input::after {
+    background-image   : url("./images/inputWorkout.jpg");
+    background-position: 70%;
+
+  }
+
+  .parallax-one-edit::after {
+    background-image   : url("./images/gifWorkout.gif");
+    background-position: 70%;
+
+  }
+
+/*#endregion */
+  
+/*#region HomePage */
+.mainText{
+  margin: 2px 1px 70px 40px; 
+  font-size: 90px;
+  text-shadow: 2px 2px 8px #000000;
+  color: white;
+}
+
+.getStarted p {
+  text-align: center;
+}
+
+.moreWorkouts p {
+  text-align: center;
+}
+/*#endregion*/
+  
+/*#region AddWorkout*/
+.form-group{
+  text-align: center;
+  font-size: 20px;
+}
+/*#endregion*/
+

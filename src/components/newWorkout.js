@@ -12,13 +12,17 @@ export class NewWorkout extends React.Component {
         this.onSubmit = this.onSubmit.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangeSets = this.onChangeSets.bind(this);
-        this.onChangeExercise = this.onChangeExercise.bind(this);
+        this.onChangeExercise1 = this.onChangeExercise1.bind(this);
+        this.onChangeExercise2 = this.onChangeExercise2.bind(this);
+        this.onChangeExercise3 = this.onChangeExercise3.bind(this);
 
 
         this.state = {
             Name: '',
             Sets: '',
-            Exercise: ''
+            Exercise1: '',
+            Exercise2: '',
+            Exercise3: ''
         }
 
     }
@@ -38,69 +42,120 @@ export class NewWorkout extends React.Component {
     }
 
     //Method for Workout Exercise input
-    onChangeExercise(e) {
+    onChangeExercise1(e) {
         this.setState({
-            Exercise: e.target.value
+            Exercise1: e.target.value
+        });
+    }
+    //Method for Workout Exercise input
+    onChangeExercise2(e) {
+        this.setState({
+            Exercise2: e.target.value
+        });
+    }
+    //Method for Workout Exercise input
+    onChangeExercise3(e) {
+        this.setState({
+            Exercise3: e.target.value
         });
     }
 
     //Method for when the Workout is submitted
     onSubmit(e) {
         e.preventDefault();
-        alert("Workout: " + this.state.Name + " " + "Sets: " + this.state.Sets + " " + "Exercise: " + this.state.Exercise);
+        alert("Workout: " + this.state.Name + " " + "Sets: " + this.state.Sets + " " + "Exercise1: " + this.state.Exercise1 + "Exercise2: " + this.state.Exercise2 + "Exercise3: " + this.state.Exercise3);
 
         const newWorkout = {
             Name: this.state.Name,
             Sets: this.state.Sets,
-            Exercise: this.state.Exercise,
+            Exercise1: this.state.Exercise1,
+            Exercise2: this.state.Exercise2,
+            Exercise3: this.state.Exercise3,
         }
         axios.post('http://localhost:4000/api/workouts', newWorkout)
-        .then((res)=>{console.log(res);
-        })
-        .catch((err)=>{console.log(err);
-        });
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
 
     }
     render() {
 
         return (
             <div className='App'>
-                <form onSubmit={this.onSubmit}>
+                <main className="main">
+                    <section className="section parallax parallax-one-input">
+                        <div className="mainText">Add A Workout
+                        </div>
+                    </section>
+                    <section className="section static static-one">
+                        <div style={{ display: "inline-block", width: "90%" }}>
+                            {/* importing our workout tag */}
+                            <form onSubmit={this.onSubmit}>
 
-                    {/* Workout Name input Control */}
-                    <div className="form-group">
-                        <label>Add Workout Name</label>
-                        <input type='text'
-                            className="form-control"
-                            value={this.state.Name}
-                            onChange={this.onChangeName}></input>
-                    </div>
+                                {/* Workout Name input Control */}
+                                <div className="form-group">
+                                    <label>Add Workout Name</label>
+                                    <input type='text'
+                                        placeholder='eg. Morning Workout'
+                                        className="form-control"
+                                        value={this.state.Name}
+                                        onChange={this.onChangeName}></input>
+                                </div>
 
-                    {/* Workout Sets input Control */}
-                    <div className="form-group">
-                        <label>Add Workout Sets</label>
-                        <input type='text'
-                            className="form-control"
-                            value={this.state.Sets}
-                            onChange={this.onChangeSets}></input>
-                    </div>
+                                {/* Workout Sets input Control */}
+                                <div className="form-group">
+                                    <label>Add Number of Sets</label>
+                                    <input type='number'
+                                        placeholder='Number of sets'
+                                        className="form-control"
+                                        value={this.state.Sets}
+                                        onChange={this.onChangeSets}></input>
+                                </div>
 
-                    {/* Workout Exercise Control */}
-                    <div className="form-group">
-                        <label>Workout Exercise</label>
-                        <textarea type='text'
-                            className="form-control"
-                            value={this.state.Exercise}
-                            onChange={this.onChangeExercise}></textarea>
-                    </div>
+                                {/* Workout Exercise Control */}
+                                <div className="form-group">
+                                    <label>Workout Exercise #1</label>
+                                    <textarea type='text'
+                                        placeholder='eg. Sit Ups'
+                                        className="form-control"
+                                        value={this.state.Exercise1}
+                                        onChange={this.onChangeExercise1}></textarea>
+                                </div>
 
-                    {/* Add Workout button */}
-                    <div className="form-group">
-                        <input type='submit'
-                            value='Add Workout'
-                            className='btn btn-primary'></input>
-                    </div>
-                </form>
+                                {/* Workout Exercise Control */}
+                                <div className="form-group">
+                                    <label>Workout Exercise #2</label>
+                                    <textarea type='text'
+                                        placeholder='eg. Squats'
+                                        className="form-control"
+                                        value={this.state.Exercise2}
+                                        onChange={this.onChangeExercise2}></textarea>
+                                </div>
+
+                                {/* Workout Exercise Control */}
+                                <div className="form-group">
+                                    <label>Workout Exercise</label>
+                                    <textarea type='text'
+                                        placeholder='eg. Bicep Curls'
+                                        className="form-control"
+                                        value={this.state.Exercise3}
+                                        onChange={this.onChangeExercise3}></textarea>
+                                </div>
+
+                                {/* Add Workout button */}
+                                <div className="form-group">
+                                    <input type='submit'
+                                        value='Add Workout'
+                                        className='btn btn-danger'></input>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </main>
+
             </div>
         );
     }

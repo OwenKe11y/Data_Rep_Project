@@ -18,30 +18,28 @@ class App extends Component {
         {/* Navbar with custom styling  */}
         <div className="App">
           <section>
-          <Navbar sticky='top' className="nav-main" variant="dark" expand="lg">
-            <Navbar.Brand href="/">HomeFit</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="mr-auto">
-                <Nav.Link href="/myWorkouts">My Workouts</Nav.Link>
-                <Nav.Link href="/newWorkout">New Workout</Nav.Link>
-              </Nav>
-              <Nav className="ml-auto">
-                <Nav.Link href="#pricing" >About Us</Nav.Link>
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
+            <Navbar sticky='top' className="nav-main" variant="dark" expand="lg">
+              <Navbar.Brand href="/">HomeFit</Navbar.Brand>
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="mr-auto">
+                  <Nav.Link href="/myWorkouts">My Workouts</Nav.Link>
+                  <Nav.Link href="/newWorkout">New Workout</Nav.Link>
+                </Nav>
+              </Navbar.Collapse>
+            </Navbar>
           </section>
+          {/* Routing  */}
           <Switch>
-            <Route path= '/' component={Home} exact></Route>
-            <Route path= '/newWorkout' component={NewWorkout} exact></Route>
-            <Route path= '/myWorkouts' component={MyWorkouts} exact></Route>
-            <Route path= '/editWorkout' component={EditWorkout} ></Route>
+            <Route path='/' component={Home} exact></Route>
+            <Route path='/newWorkout' component={NewWorkout} exact></Route>
+            <Route path='/myWorkouts' component={MyWorkouts} exact></Route>
+            <Route path='/editWorkout/:id' component={EditWorkout} ></Route>
           </Switch>
 
         </div>
 
-        
+
       </Router>
     );
   }
